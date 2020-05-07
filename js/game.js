@@ -42,11 +42,13 @@ class Game{
 
        cars = [car1,car2,car3,car4];
     }
-
+    
     play(){
         form.hide();
         
         Player.getPlayerInfo();
+        player.getCarsAtEnd();
+        
         if(allPlayers !== undefined){
             background("white");
             image(track,0,-displayHeight*4,displayWidth,displayHeight*5);
@@ -87,6 +89,8 @@ class Game{
 
         if(player.distance > 3500){
             gameState = 2;
+            player.rank += 1;
+            Player.updateCarsAtEnd(player.rank);
         }
 
         drawSprites();
@@ -94,6 +98,6 @@ class Game{
 
     end(){
         console.log("game ended");
-
+        console.log(player.rank);
     }
 }
